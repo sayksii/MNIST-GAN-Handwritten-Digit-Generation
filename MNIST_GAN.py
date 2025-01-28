@@ -12,19 +12,19 @@ class Generator(torch.nn.Module):
         # nn.Sequential 為之前 FCNN 定義多層網絡的改良寫法，可以更簡潔地定義多層網絡
         self.model = torch.nn.Sequential(
             torch.nn.Linear(input_dim, 64),  # 全連接層，輸入維度為 input_dim，輸出維度為64
-            torch.nn.LeakyReLU(inplace=True),  # 激活函數 ReLU，inplace=True 表示直接對輸入張量進行修改，節省內存
+            torch.nn.LeakyReLU(inplace=True),  # 活化函數 ReLU，inplace=True 表示直接對輸入張量進行修改，節省內存
             torch.nn.Linear(64, 128),  # 全連接層，輸入維度為64，輸出維度為128
-            torch.nn.LeakyReLU(inplace=True),  # 激活函數 ReLU
+            torch.nn.LeakyReLU(inplace=True),  # 活化函數 ReLU
             torch.nn.Dropout(p=0.3),  # 丟棄率為 30%
             torch.nn.Linear(128, 256),  # 全連接層，輸入維度為128，輸出維度為256
-            torch.nn.LeakyReLU(inplace=True),  # 激活函數 ReLU
+            torch.nn.LeakyReLU(inplace=True),  # 活化函數 ReLU
             torch.nn.Linear(256, 512),  # 全連接層，輸入維度為256，輸出維度為512
-            torch.nn.LeakyReLU(inplace=True),  # 激活函數 ReLU
+            torch.nn.LeakyReLU(inplace=True),  # 活化函數 ReLU
             torch.nn.Dropout(p=0.3),  # 丟棄率為 30%
             torch.nn.Linear(512, 1024),  # 全連接層，輸入維度為512，輸出維度為1024
-            torch.nn.LeakyReLU(inplace=True),  # 激活函數 ReLU
+            torch.nn.LeakyReLU(inplace=True),  # 活化函數 ReLU
             torch.nn.Linear(1024, 1 * 28 * 28),  # 降維回去，輸入維度為1024，輸出維度為1*28*28
-            torch.nn.Tanh()  # GAN 生成器通常使用 Tanh 作為輸出層的激活函數，將輸出值映射到 -1~1 之間
+            torch.nn.Tanh()  # GAN 生成器通常使用 Tanh 作為輸出層的活化函數，將輸出值映射到 -1~1 之間
         )
 
     def forward(self, x): # x 為輸入的隨機噪聲，形狀為 (batch_size, input_dim) 此為 Sequential、Linear、ReLU 皆規定的輸入格式，batch_size 表示生成多少張影像，input_dim 表示生成器的輸入維。print: torch.Size([64, 100])，64 為 batch_size、100 為 input_dim
@@ -69,7 +69,7 @@ class Discriminator(torch.nn.Module):
 
         self.model = torch.nn.Sequential(
             torch.nn.Linear(1 * 28 * 28, 1024),  # 全連接層，輸入維度為1*28*28，輸出維度為1024
-            torch.nn.LeakyReLU(inplace=True),  # 激活函數 ReLU
+            torch.nn.LeakyReLU(inplace=True),  # 活化函數 ReLU
             torch.nn.Linear(1024, 512),
             torch.nn.LeakyReLU(inplace=True),
             torch.nn.Dropout(p=0.3),  # 丟棄率為 30%
@@ -79,7 +79,7 @@ class Discriminator(torch.nn.Module):
             torch.nn.Linear(256, 128),
             torch.nn.LeakyReLU(inplace=True),
             torch.nn.Linear(128, 1),  # 輸出層，輸出維度為1，表示判斷輸入影像為真實影像的概率
-            torch.nn.Sigmoid()  # GAN 判別器通常使用 Sigmoid 作為輸出層的激活函數(邏輯回歸那個)，將輸出值映射到 0~1 之間
+            torch.nn.Sigmoid()  # GAN 判別器通常使用 Sigmoid 作為輸出層的活化函數(邏輯回歸那個)，將輸出值映射到 0~1 之間
         )
 
     def forward(self, image):  # image 為輸入的影像，形狀為 (batch_size, 1, 28, 28)。print: torch.Size([64, 1, 28, 28])，64 為 batch_size

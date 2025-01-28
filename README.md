@@ -19,11 +19,7 @@ This project implements a Generative Adversarial Network (GAN) to generate reali
 
 Before running this project, ensure you have the following installed:
 
-- Python 3.8 or above
-- PyTorch
-- torchvision
-- matplotlib
-- Other libraries: `os`, `shutil`
+- Python 3.9 or above
 
 ---
 

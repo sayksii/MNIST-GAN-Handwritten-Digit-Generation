@@ -31,7 +31,7 @@ Before running this project, ensure you have the following installed:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/MNIST-GAN-Handwritten-Digit-Generation.git
+   git clone https://github.com/sayksii/MNIST-GAN-Handwritten-Digit-Generation.git
    cd MNIST-GAN-Handwritten-Digit-Generation
     ```
 2. Install the required libraries:

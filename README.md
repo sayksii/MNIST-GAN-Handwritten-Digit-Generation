@@ -31,7 +31,7 @@
 
 1. clone 存儲庫：
    ```bash
-   git clone https://github.com/yourusername/MNIST-GAN-Handwritten-Digit-Generation.git
+   git clone https://github.com/sayksii/MNIST-GAN-Handwritten-Digit-Generation.git
    cd MNIST-GAN-Handwritten-Digit-Generation
    ```
 
